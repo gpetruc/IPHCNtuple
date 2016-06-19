@@ -119,6 +119,7 @@ ROOTGLIBS     = $(shell root-config --glibs) -lMathMore -lMinuit2
 #LHAPDFLIB=-L/grid_mnt/home/nchanon/LHAPDF-6.1.5-install/lib/ -lLHAPDF 
 #LHAPDFINCDIR=-I/afs/cern.ch/work/c/chanon/LHAPDF-6.1.5-install/include
 #LHAPDFLIB=-L/afs/cern.ch/work/c/chanon/LHAPDF-6.1.5-install/lib -lLHAPDF 
+LHAPDF=$(shell scramv1 tool tag lhapdf LHAPDF_BASE)
 LHAPDFINCDIR=-I${LHAPDF}/include
 LHAPDFLIB=-L${LHAPDF}/lib -lLHAPDF
 
