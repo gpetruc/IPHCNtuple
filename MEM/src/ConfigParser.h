@@ -14,7 +14,7 @@ class ConfigParser
   ~ConfigParser();
 
   void GetConfigFromFile(string);
-  void LoadHypotheses(int*, string**, int**, int**); 
+  void LoadHypotheses(int*, string**, int**, int**, int**); 
   void LoadIntegrationRange(double*, double*, double*);
   void LoadJetChoice(string*);
   void LoadOptim(int*);
@@ -25,6 +25,7 @@ class ConfigParser
   int nHyp;
   string* sHyp;
   int* Hyp;
+  int *index_hyp;
 
   int doTTLL, doTTHfl, doTTHsl, doTTW, doTTWJJ, doTTbarfl, doTTbarsl;
   int nPointsHypTTLL, nPointsHypTTHsl, nPointsHypTTHfl, nPointsHypTTW, nPointsHypTTWJJ, nPointsHypTTbarfl, nPointsHypTTbarsl;
@@ -141,7 +142,7 @@ void ConfigParser::ReadOptionValue(string* option, string* value){
   return;
 }
 
-void ConfigParser::LoadHypotheses(int* nhyp, string** shyp, int** hyp, int** nPointsHyp){
+void ConfigParser::LoadHypotheses(int* nhyp, string** shyp, int** hyp, int** nPointsHyp, int** index_hyp){
 
   (*nhyp) = 0;
 
@@ -157,47 +158,58 @@ void ConfigParser::LoadHypotheses(int* nhyp, string** shyp, int** hyp, int** nPo
   (*hyp) = new int[(*nhyp)];
   (*nPointsHyp) = new int[(*nhyp)]; 
 
+  (*index_hyp) = new int[7];
+  for (int i=0; i<7; i++) (*index_hyp)[i] = -1;
+
+
   int ih=0;
   if (doTTLL){
     (*shyp)[ih] = "TTLL";
     (*hyp)[ih] = kMEM_TTLL_TopAntitopDecay;
     (*nPointsHyp)[ih] = nPointsHypTTLL;
+    (*index_hyp)[0] = ih;
     ih++;
   }
   if (doTTHsl){
     (*shyp)[ih] = "TTHsl";
     (*hyp)[ih] = kMEM_TTH_TopAntitopHiggsSemiLepDecay;
     (*nPointsHyp)[ih] = nPointsHypTTHsl;
+    (*index_hyp)[1] = ih;
     ih++;
   }
   if (doTTHfl){
     (*shyp)[ih] = "TTHfl";
     (*hyp)[ih] = kMEM_TTH_TopAntitopHiggsDecay;
     (*nPointsHyp)[ih] = nPointsHypTTHfl;
+    (*index_hyp)[2] = ih;
     ih++;
   }
   if (doTTW){
     (*shyp)[ih] = "TTW";
     (*hyp)[ih] = kMEM_TTW_TopAntitopDecay;
     (*nPointsHyp)[ih] = nPointsHypTTW;
+    (*index_hyp)[3] = ih;
     ih++;
   }
   if (doTTWJJ){
     (*shyp)[ih] = "TTWJJ";
     (*hyp)[ih] = kMEM_TTWJJ_TopAntitopDecay;
     (*nPointsHyp)[ih] = nPointsHypTTWJJ;
+    (*index_hyp)[4] = ih;
     ih++;
   }
   if (doTTbarfl){
     (*shyp)[ih] = "TTbarfl";
     (*hyp)[ih] = kMEM_TTbar_TopAntitopFullyLepDecay;
     (*nPointsHyp)[ih] = nPointsHypTTbarfl;
+    (*index_hyp)[5] = ih;
     ih++;
   }
   if (doTTbarsl){
     (*shyp)[ih] = "TTbarsl";
     (*hyp)[ih] = kMEM_TTbar_TopAntitopSemiLepDecay;
     (*nPointsHyp)[ih] = nPointsHypTTbarsl;
+    (*index_hyp)[6] = ih;
     ih++;
   }
 
