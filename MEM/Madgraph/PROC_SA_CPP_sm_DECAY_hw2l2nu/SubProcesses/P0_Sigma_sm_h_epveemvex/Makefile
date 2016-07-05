@@ -1,7 +1,7 @@
 LIBDIR=../../lib
 INCDIR=../../src
 MODELLIB=model_sm_hw2l2nu
-CXXFLAGS= -O -I$(INCDIR) -I.
+CXXFLAGS= -O -I$(INCDIR) -I. -fPIC
 LIBFLAGS= -L$(LIBDIR) -l$(MODELLIB)
 
 main=check
