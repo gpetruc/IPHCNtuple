@@ -1,3 +1,5 @@
+#ifndef _Tools_h
+#define _Tools_h
 
 #include "Permutations.h"
 
@@ -101,3 +103,4 @@ void FillWeightVectors(Permutations Perm, std::vector<double>* MEAllWeights, std
   return;
 }
 
+#endif

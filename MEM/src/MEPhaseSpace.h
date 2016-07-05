@@ -4,12 +4,6 @@
 #include <iostream>
 #include <iomanip>
 
-#include "TLorentzVector.h"
-#include "TMath.h"
-#include "TMatrixDSym.h"
-#include "TMatrix.h"
-
-#include "TransferFunctions.h"
 #include "LHAPDF/LHAPDF.h"
 //#include "/grid_mnt/home/nchanon/LHAPDF-6.1.5-install/include/LHAPDF/LHAPDF.h"
 #include "rambo.h"
@@ -46,7 +40,7 @@
 #include "../Madgraph/PROC_SA_CPP_sm_no_b_mass_DECAY_pptllq/SubProcesses/P0_Sigma_sm_no_b_mass_uxbx_txepemdx/CPPProcess_P0_Sigma_sm_no_b_mass_uxbx_txepemdx.h"
 
 
-#define kNone -1 //No Integration, just evaluation
+#define kNoneMEM -1 //No Integration, just evaluation
 #define kInitialPartons 0 //Integration over bjorken x, given the final states
 #define kAllPartonsTTH 1 //Integration over everything (total cross-section)
 //#define kAllPartonsTTH_FSonly 2 //Integration over final state phase space only
@@ -97,7 +91,6 @@
 #define kLL 2
 #define kLNu 3
 #define kLNuJJ 4
-#define kNone -1
 #define kLLJ 5
 
 #define kNoTop -1
@@ -136,6 +129,11 @@
 #define kCat_3l_1b_0j 12
 #define kCat_3l_0b_1j 13
 #define kCat_3l_0b_0j 14
+#include "TLorentzVector.h"
+#include "TMath.h"
+#include "TMatrixDSym.h"
+#include "TMatrix.h"
+#include "TransferFunctions.h"
 
 using namespace std;
 using namespace LHAPDF;
@@ -1551,7 +1549,7 @@ double MEPhaseSpace::Eval(const double* x) const {
 
   double weight = 0;
 
-  if (iMode == kNone){
+  if (iMode == kNoneMEM){
   //Evaluate weight only
     double weightME = ComputeMatrixElement();
     double weightPDF = ComputePDF(pCore->at(0)[0]*2/comEnergy, pCore->at(1)[0]*2/comEnergy, muF);
