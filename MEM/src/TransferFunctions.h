@@ -1,5 +1,6 @@
 #ifndef TRANSFERFUNCTIONS_H
 #define TRANSFERFUNCTIONS_H
+#include <TH1F.h>
 
 using namespace std;
 

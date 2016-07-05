@@ -630,7 +630,7 @@ void MultiLepton::FillTTbarSemiLepHyp(MEPhaseSpace** meIntegrator){
 
   if ((*meIntegrator)->iNleptons==3 || (*meIntegrator)->iNleptons==2){
 
-    (*meIntegrator)->FinalStateTTV.Boson_Type = kNone;
+    (*meIntegrator)->FinalStateTTV.Boson_Type = kNoneMEM;
     (*meIntegrator)->FinalStateTTV.Top1_Decay = kTopHadDecay;
     (*meIntegrator)->FinalStateTTV.Top1_Sign = (Leptons[0].Id>0)?kTop:kAntitop;
     (*meIntegrator)->FinalStateTTV.Top2_Decay = kTopLepDecay;
@@ -658,7 +658,7 @@ void MultiLepton::FillTTbarFullyLepHyp(MEPhaseSpace** meIntegrator){
 
   if ((*meIntegrator)->iNleptons==3 || (*meIntegrator)->iNleptons==4){
 
-    (*meIntegrator)->FinalStateTTV.Boson_Type = kNone;
+    (*meIntegrator)->FinalStateTTV.Boson_Type = kNoneMEM;
     (*meIntegrator)->FinalStateTTV.Top1_Decay = kTopLepDecay;
     (*meIntegrator)->FinalStateTTV.Top1_Sign = (Leptons[0].Id>0)?kAntitop:kTop;
     (*meIntegrator)->FinalStateTTV.Top2_Decay = kTopLepDecay;
