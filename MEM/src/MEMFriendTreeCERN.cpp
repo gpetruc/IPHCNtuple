@@ -103,6 +103,8 @@ void MEMFriendTreeCERN::init(const std::string &config) {
 void MEMFriendTreeCERN::clear() {
   multiLepton->Leptons.clear();
   multiLepton->Jets.clear();
+  multiLepton->Bjets.clear();
+  multiLepton->AllJets.clear();
   multiLepton->JetsHighestPt.clear();
   multiLepton->JetsClosestMw.clear();
   multiLepton->JetsLowestMjj.clear();
