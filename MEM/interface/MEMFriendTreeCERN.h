@@ -17,6 +17,10 @@ class  MEMFriendTreeCERN {
     public:
 	MEMFriendTreeCERN() : multiLepton(nullptr), cfgParser(nullptr), hypIntegrator(nullptr) {}
         ~MEMFriendTreeCERN() ;
+        MEMFriendTreeCERN(const MEMFriendTreeCERN &other) = delete;
+        MEMFriendTreeCERN(MEMFriendTreeCERN &&other) = delete;
+        MEMFriendTreeCERN & operator=(const MEMFriendTreeCERN &other) = delete;
+        MEMFriendTreeCERN & operator=(MEMFriendTreeCERN &&other) = delete;
 
         void init(const std::string &config);
 
