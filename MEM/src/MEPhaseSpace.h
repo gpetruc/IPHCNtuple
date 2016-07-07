@@ -521,7 +521,9 @@ MEPhaseSpace::MEPhaseSpace(){
   GeV2barn = 0.38937966 * pow (10, 9.);
 
   y = new double[15];
+  std::fill(y, y+15, -999.);
   xMEM = new double[28];
+  std::fill(xMEM, xMEM+28, -999.);
 
 }
 
