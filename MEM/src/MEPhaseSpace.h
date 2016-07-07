@@ -470,7 +470,7 @@ class MEPhaseSpace
 };
 
 MEPhaseSpace::MEPhaseSpace(){
-
+  verbosity = 0; 
   if (verbosity>=1) cout << "MEPhaseSpace constructor" << endl;
 
   //Initialise all the partons
