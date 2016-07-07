@@ -153,6 +153,7 @@ MultiLepton::~MultiLepton(){
 }
 
 void MultiLepton::FillParticle(string Type, int id, TLorentzVector p4){
+  std::cout << "DEBUG: MultiLepton::FillParticle " << Type << " " << id << " " << p4.Pt() << std::endl;
 
   Particle p;
   p.Id = id;
@@ -169,6 +170,7 @@ void MultiLepton::FillParticle(string Type, int id, TLorentzVector p4){
 }
 
 void MultiLepton::FillParticle(string Type, int id, float csv, float jec_up, float jec_down, float jer_up, float jer_down, TLorentzVector p4){
+  std::cout << "DEBUG: MultiLepton::FillParticle " << Type << " " << id << " " << p4.Pt() << "  " << csv << std::endl;
 
   Particle p;
   p.Id = id;
@@ -242,7 +244,7 @@ int MultiLepton::DoPermutationMissingJet(string Type){
 
 void MultiLepton::FillParticlesHypothesis(int kMode, MEPhaseSpace** meIntegrator)
 {
-
+  std::cout << "MultiLepton::FillParticlesHypothesis(" << kMode << ")" << std::endl;
   if (kMode==kMEM_TTLL_TopAntitopDecay) FillTTLLHyp(meIntegrator);
   if (kMode==kMEM_TTH_TopAntitopHiggsDecay) FillTTHFullyLepHyp(meIntegrator);
   if (kMode==kMEM_TTH_TopAntitopHiggsSemiLepDecay) FillTTHSemiLepHyp(meIntegrator);
