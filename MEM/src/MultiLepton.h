@@ -56,8 +56,8 @@ class MultiLepton
   float mHT;
   double mET_cov00, mET_cov01, mET_cov10, mET_cov11;
 
-  double *xL;
-  double *xU;
+  std::vector<double> xL;
+  std::vector<double> xU;
   int nParam;
 
   double mB;
@@ -124,8 +124,8 @@ class MultiLepton
 MultiLepton::MultiLepton(){
 
   nParam = 15;
-  xL = new double[nParam];
-  xU = new double[nParam];
+  xL.resize(nParam);
+  xU.resize(nParam);
 
   mB = 4.7;
   JetTFfracmin = 0.65;//0.65; //next try 0.5 (5 sigma at 100 GeV for a 0.2*Egen gaussian width)
@@ -153,6 +153,7 @@ MultiLepton::~MultiLepton(){
 }
 
 void MultiLepton::FillParticle(string Type, int id, TLorentzVector p4){
+  std::cout << "DEBUG: MultiLepton::FillParticle " << Type << " " << id << " " << p4.Pt() << std::endl;
 
   Particle p;
   p.Id = id;
@@ -169,6 +170,7 @@ void MultiLepton::FillParticle(string Type, int id, TLorentzVector p4){
 }
 
 void MultiLepton::FillParticle(string Type, int id, float csv, float jec_up, float jec_down, float jer_up, float jer_down, TLorentzVector p4){
+  std::cout << "DEBUG: MultiLepton::FillParticle " << Type << " " << id << " " << p4.Pt() << "  " << csv << std::endl;
 
   Particle p;
   p.Id = id;
@@ -242,7 +244,7 @@ int MultiLepton::DoPermutationMissingJet(string Type){
 
 void MultiLepton::FillParticlesHypothesis(int kMode, MEPhaseSpace** meIntegrator)
 {
-
+  std::cout << "MultiLepton::FillParticlesHypothesis(" << kMode << ")" << std::endl;
   if (kMode==kMEM_TTLL_TopAntitopDecay) FillTTLLHyp(meIntegrator);
   if (kMode==kMEM_TTH_TopAntitopHiggsDecay) FillTTHFullyLepHyp(meIntegrator);
   if (kMode==kMEM_TTH_TopAntitopHiggsSemiLepDecay) FillTTHSemiLepHyp(meIntegrator);

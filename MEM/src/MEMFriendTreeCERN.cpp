@@ -103,24 +103,26 @@ void MEMFriendTreeCERN::init(const std::string &config) {
 void MEMFriendTreeCERN::clear() {
   multiLepton->Leptons.clear();
   multiLepton->Jets.clear();
+  multiLepton->Bjets.clear();
+  multiLepton->AllJets.clear();
   multiLepton->JetsHighestPt.clear();
   multiLepton->JetsClosestMw.clear();
   multiLepton->JetsLowestMjj.clear();
 }
 
-void MEMFriendTreeCERN::addLepton(const TLorentzVector &p4, int pdgId) {
+void MEMFriendTreeCERN::addLepton(TLorentzVector p4, int pdgId) {
   multiLepton->FillParticle("lepton", pdgId, p4);
 }
 
-void MEMFriendTreeCERN::addJet(const std::string &what,  const TLorentzVector &p4, float CSV) {
+void MEMFriendTreeCERN::addJet(const std::string &what,  TLorentzVector p4, float CSV) {
     multiLepton->FillParticle(what, 0, CSV, 0,0,0,0, p4);
 }
 
-void MEMFriendTreeCERN::addBJet(const TLorentzVector &p4, float CSV) {
-    multiLepton->FillParticle("bjet", 0, CSV, 0,0,0,0, p4);
+void MEMFriendTreeCERN::addBJet(TLorentzVector p4, float CSV) {
+    multiLepton->FillParticle("bjet", 5, CSV, 0,0,0,0, p4);
 }
 
-void MEMFriendTreeCERN::setMET(const TLorentzVector &p4, double cov00, double cov01, double cov10, double cov11, double mHT) {
+void MEMFriendTreeCERN::setMET(TLorentzVector p4, double cov00, double cov01, double cov10, double cov11, double mHT) {
   multiLepton->mET = p4;
   multiLepton->mET_cov00 = cov00;
   multiLepton->mET_cov01 = cov01;
@@ -149,11 +151,23 @@ std::map<std::string,float> MEMFriendTreeCERN::compute() {
         if (initresult==1) {
             MEMpermutations[ih]->LoopPermutations(hypIntegrator);
             ret[shyp[ih]] = MEMpermutations[ih]->resMEM_avgExl0.weight;
+            ret[shyp[ih]+"_err"] = MEMpermutations[ih]->resMEM_avgExl0.err;
+            ret[shyp[ih]+"_time"] = MEMpermutations[ih]->resMEM_avgExl0.time;
+            ret[shyp[ih]+"_chi2"] = MEMpermutations[ih]->resMEM_avgExl0.chi2;
+            ret[shyp[ih]+"_nHypAll"] = MEMpermutations[ih]->nHypAllowed;
+            ret[shyp[ih]+"_nNull"] = MEMpermutations[ih]->nNullResult;
         }
     }
-    //if (index_hyp[1]!=-1 && index_hyp[2]!=-1) {
-    //    if (MEMpermutations[index_hyp[1]].computeHyp || MEMpermutations[index_hyp[2]].computeHyp)
-    //        CombineHypotheses(MEMpermutations[index_hyp[1]], MEMpermutations[index_hyp[2]], &tree.mc_mem_tth_weight, &tree.mc_mem_tth_weight_log, &tree.mc_mem_tth_weight_err, &tree.mc_mem_tth_weight_chi2, &tree.mc_mem_tth_weight_time, &tree.mc_mem_tth_weight_avg, &tree.mc_mem_tth_weight_max, &tree.mc_mem_tth_weight_logmean, &tree.mc_kin_tth_weight_logmax, &tree.mc_kin_tth_weight_logmaxint, &tree.mc_mem_tth_weight_kinmax, &tree.mc_mem_tth_weight_kinmaxint, &tree.mc_mem_tth_weight_JEC_up, &tree.mc_mem_tth_weight_JEC_down, &tree.mc_mem_tth_weight_JER_up, &tree.mc_mem_tth_weight_JER_down);
-    //}
+    if (index[1]!=-1 && index[2]!=-1) {
+        if (MEMpermutations[index[1]]->computeHyp || MEMpermutations[index[2]]->computeHyp) {
+            double mem_tth_weight, mem_tth_weight_log, mem_tth_weight_err, mem_tth_weight_avg, mem_tth_weight_max, mem_tth_weight_logmean, kin_tth_weight_logmax, kin_tth_weight_logmaxint, mem_tth_weight_kinmax, mem_tth_weight_kinmaxint, mem_tth_weight_JEC_up, mem_tth_weight_JEC_down, mem_tth_weight_JER_up, mem_tth_weight_JER_down;
+            float mem_tth_weight_chi2, mem_tth_weight_time;
+            CombineHypotheses(*MEMpermutations[index[1]], *MEMpermutations[index[2]], &mem_tth_weight, &mem_tth_weight_log, &mem_tth_weight_err, &mem_tth_weight_chi2, &mem_tth_weight_time, &mem_tth_weight_avg, &mem_tth_weight_max, &mem_tth_weight_logmean, &kin_tth_weight_logmax, &kin_tth_weight_logmaxint, &mem_tth_weight_kinmax, &mem_tth_weight_kinmaxint, &mem_tth_weight_JEC_up, &mem_tth_weight_JEC_down, &mem_tth_weight_JER_up, &mem_tth_weight_JER_down);
+            ret["TTH"] = mem_tth_weight;
+            ret["TTH_err"] = mem_tth_weight_err;
+            ret["TTH_chi2"] = mem_tth_weight_chi2;
+            ret["TTH_time"] = mem_tth_weight_time;
+        }
+    }
     return ret;
 }

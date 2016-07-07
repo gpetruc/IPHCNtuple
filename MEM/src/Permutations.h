@@ -314,8 +314,8 @@ IntegrationResult Permutations::GetMEMKinFitResult(HypIntegrator* hypIntegrator,
 
   for (int itry=0; itry<ntry; itry++){
 
-    var = (*hypIntegrator).FindMinimizationiInitialValues(multiLepton.xL, multiLepton.xU);
-    resMin = (*hypIntegrator).DoMinimization(multiLepton.xL, multiLepton.xU, var);
+    var = (*hypIntegrator).FindMinimizationiInitialValues(&multiLepton.xL[0], &multiLepton.xU[0]);
+    resMin = (*hypIntegrator).DoMinimization(&multiLepton.xL[0], &multiLepton.xU[0], var);
 
     cout << "KIN TRY Hyp "<< HypothesisName <<" Vegas Ncall="<<(*hypIntegrator).nPointsCatHyp <<" -log(max)=" << resMin.weight<<" Time(s)="<<resMin.time<<endl;
  
@@ -344,7 +344,7 @@ IntegrationResult Permutations::GetMEMResult(HypIntegrator* hypIntegrator){
 
   (*hypIntegrator).meIntegrator->weight_max = 0;
 
-  resMEM = (*hypIntegrator).DoIntegration(multiLepton.xL, multiLepton.xU, stage, iterationNumber);
+  resMEM = (*hypIntegrator).DoIntegration(&multiLepton.xL[0], &multiLepton.xU[0], stage, iterationNumber);
 
   cout << "MEM Hyp "<< HypothesisName<<" Vegas Ncall="<<(*hypIntegrator).nPointsCatHyp <<" Cross section (pb) : " << resMEM.weight<< " +/- "<< resMEM.err<<" chi2/ndof="<< resMEM.chi2<<" Time(s)="<<resMEM.time<<endl;
   cout << "KIN from MEM Hyp "<< HypothesisName<<" Vegas Ncall="<<(*hypIntegrator).nPointsCatHyp <<" max=" << (*hypIntegrator).meIntegrator->weight_max<<" Time(s)="<<resMEM.time<<endl;
@@ -378,7 +378,7 @@ void Permutations::GetMEMResult_Syst(HypIntegrator* hypIntegrator, IntegrationRe
 
       multiLepton.FillParticlesHypothesis(Hypothesis, &((*hypIntegrator).meIntegrator));
 
-      (*resMEM_syst)[iSyst-1] = (*hypIntegrator).DoIntegration(multiLepton.xL, multiLepton.xU, stage, iterationNumber);
+      (*resMEM_syst)[iSyst-1] = (*hypIntegrator).DoIntegration(&multiLepton.xL[0], &multiLepton.xU[0], stage, iterationNumber);
       (*resMEM_syst)[iSyst-1].weight /= xs;
       (*resMEM_syst)[iSyst-1].err /= xs;
 

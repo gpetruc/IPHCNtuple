@@ -166,55 +166,55 @@ class MEPhaseSpace
 
     
     void InitializeMadgraphProcesses(string);
-    CPPProcess* process;
-    CPPProcess_tbwjj* process_tbwjj;
-    CPPProcess_tbwlnu* process_tbwlnu;
-    CPPProcess_hw2l2nu* process_hw2l2nu;
-    CPPProcess_antitbwjj* process_antitbwjj;
-    CPPProcess_ggttll* process_ggttll;
-    //CPPProcess_qqttlpvl* process_qqttlpvl;
-    //CPPProcess_qqttlmvl* process_qqttlmvl;
-    CPPProcess_P0_Sigma_sm_ckm_cdx_ttxepve* process_qqttlpvl_cdx;
-    CPPProcess_P0_Sigma_sm_ckm_udx_ttxepve* process_qqttlpvl_udx;
-    CPPProcess_P0_Sigma_sm_ckm_usx_ttxepve* process_qqttlpvl_usx;
-    CPPProcess_P0_Sigma_sm_ckm_dcx_ttxemvex* process_qqttlmvl_dcx;
-    CPPProcess_P0_Sigma_sm_ckm_dux_ttxemvex* process_qqttlmvl_dux;
-    CPPProcess_P0_Sigma_sm_ckm_sux_ttxemvex* process_qqttlmvl_sux;
-    CPPProcess_P0_Sigma_sm_ckm_gc_ttxepvegd* process_P0_Sigma_sm_ckm_gc_ttxepvegd;
-    CPPProcess_P0_Sigma_sm_ckm_gdx_ttxepvegcx* process_P0_Sigma_sm_ckm_gdx_ttxepvegcx;
-    CPPProcess_P0_Sigma_sm_ckm_gdx_ttxepvegux* process_P0_Sigma_sm_ckm_gdx_ttxepvegux;
-    CPPProcess_P0_Sigma_sm_ckm_gsx_ttxepvegux* process_P0_Sigma_sm_ckm_gsx_ttxepvegux;
-    CPPProcess_P0_Sigma_sm_ckm_gu_ttxepvegd* process_P0_Sigma_sm_ckm_gu_ttxepvegd;
-    CPPProcess_P0_Sigma_sm_ckm_gu_ttxepvegs* process_P0_Sigma_sm_ckm_gu_ttxepvegs;
-    CPPProcess_P0_Sigma_sm_ckm_gcx_ttxemvexgdx* process_P0_Sigma_sm_ckm_gcx_ttxemvexgdx;
-    CPPProcess_P0_Sigma_sm_ckm_gd_ttxemvexgc* process_P0_Sigma_sm_ckm_gd_ttxemvexgc;
-    CPPProcess_P0_Sigma_sm_ckm_gd_ttxemvexgu* process_P0_Sigma_sm_ckm_gd_ttxemvexgu;
-    CPPProcess_P0_Sigma_sm_ckm_gs_ttxemvexgu* process_P0_Sigma_sm_ckm_gs_ttxemvexgu;
-    CPPProcess_P0_Sigma_sm_ckm_gux_ttxemvexgdx* process_P0_Sigma_sm_ckm_gux_ttxemvexgdx;
-    CPPProcess_P0_Sigma_sm_ckm_gux_ttxemvexgsx* process_P0_Sigma_sm_ckm_gux_ttxemvexgsx;
-    CPPProcess_P0_Sigma_sm_gg_ttx* process_P0_Sigma_sm_gg_ttx;
+    CPPProcess* process = nullptr;
+    CPPProcess_tbwjj* process_tbwjj = nullptr;
+    CPPProcess_tbwlnu* process_tbwlnu = nullptr;
+    CPPProcess_hw2l2nu* process_hw2l2nu = nullptr;
+    CPPProcess_antitbwjj* process_antitbwjj = nullptr;
+    CPPProcess_ggttll* process_ggttll = nullptr;
+    //CPPProcess_qqttlpvl* process_qqttlpvl = nullptr;
+    //CPPProcess_qqttlmvl* process_qqttlmvl = nullptr;
+    CPPProcess_P0_Sigma_sm_ckm_cdx_ttxepve* process_qqttlpvl_cdx = nullptr;
+    CPPProcess_P0_Sigma_sm_ckm_udx_ttxepve* process_qqttlpvl_udx = nullptr;
+    CPPProcess_P0_Sigma_sm_ckm_usx_ttxepve* process_qqttlpvl_usx = nullptr;
+    CPPProcess_P0_Sigma_sm_ckm_dcx_ttxemvex* process_qqttlmvl_dcx = nullptr;
+    CPPProcess_P0_Sigma_sm_ckm_dux_ttxemvex* process_qqttlmvl_dux = nullptr;
+    CPPProcess_P0_Sigma_sm_ckm_sux_ttxemvex* process_qqttlmvl_sux = nullptr;
+    CPPProcess_P0_Sigma_sm_ckm_gc_ttxepvegd* process_P0_Sigma_sm_ckm_gc_ttxepvegd = nullptr;
+    CPPProcess_P0_Sigma_sm_ckm_gdx_ttxepvegcx* process_P0_Sigma_sm_ckm_gdx_ttxepvegcx = nullptr;
+    CPPProcess_P0_Sigma_sm_ckm_gdx_ttxepvegux* process_P0_Sigma_sm_ckm_gdx_ttxepvegux = nullptr;
+    CPPProcess_P0_Sigma_sm_ckm_gsx_ttxepvegux* process_P0_Sigma_sm_ckm_gsx_ttxepvegux = nullptr;
+    CPPProcess_P0_Sigma_sm_ckm_gu_ttxepvegd* process_P0_Sigma_sm_ckm_gu_ttxepvegd = nullptr;
+    CPPProcess_P0_Sigma_sm_ckm_gu_ttxepvegs* process_P0_Sigma_sm_ckm_gu_ttxepvegs = nullptr;
+    CPPProcess_P0_Sigma_sm_ckm_gcx_ttxemvexgdx* process_P0_Sigma_sm_ckm_gcx_ttxemvexgdx = nullptr;
+    CPPProcess_P0_Sigma_sm_ckm_gd_ttxemvexgc* process_P0_Sigma_sm_ckm_gd_ttxemvexgc = nullptr;
+    CPPProcess_P0_Sigma_sm_ckm_gd_ttxemvexgu* process_P0_Sigma_sm_ckm_gd_ttxemvexgu = nullptr;
+    CPPProcess_P0_Sigma_sm_ckm_gs_ttxemvexgu* process_P0_Sigma_sm_ckm_gs_ttxemvexgu = nullptr;
+    CPPProcess_P0_Sigma_sm_ckm_gux_ttxemvexgdx* process_P0_Sigma_sm_ckm_gux_ttxemvexgdx = nullptr;
+    CPPProcess_P0_Sigma_sm_ckm_gux_ttxemvexgsx* process_P0_Sigma_sm_ckm_gux_ttxemvexgsx = nullptr;
+    CPPProcess_P0_Sigma_sm_gg_ttx* process_P0_Sigma_sm_gg_ttx = nullptr;
 
-    const LHAPDF::PDF* pdf;
+    const LHAPDF::PDF* pdf = nullptr;
 
     double GeV2barn;              // Conversion factor 1/GeV^2 ->pb
 
     int iMode;
     int iNleptons;
-    int iOption;
+    int iOption = 0/*FIXME UNINIT*/;
     int iGen;
     int iCore;
-    int nExternals, nCoreExternals;
+    int nExternals = 0/*FIXME UNINIT*/, nCoreExternals;
     mutable int iCall;
     mutable int iIteration;
     //int iTF;
     //int iTFOption;
     int iOptim, iOptimTopLep, iOptimTopHad, iOptimHiggs, iOptimW;
-    int iMinimize;
+    int iMinimize = 0/*FIXME UNINIT*/;
 
-    double MEMZEROWEIGHT;
+    double MEMZEROWEIGHT = 0/*FIXME UNINIT*/;
     mutable double weight_max;
 
-    mutable int isTopAntitop;
+    mutable int isTopAntitop  = 0/*FIXME UNINIT*/;
 
     double comEnergy;
     mutable double muF;
@@ -252,8 +252,8 @@ class MEPhaseSpace
     void FillHiggsDecayPhaseSpacePoint(TLorentzVector&, TLorentzVector&, TLorentzVector&, TLorentzVector&, TLorentzVector&) const;
     void FillTTbarPhaseSpacePoint(TLorentzVector&, TLorentzVector&) const;
 
-    double Wenergy;
-    double Benergy;
+    double Wenergy = 0/*FIXME UNINIT AND UNUSED*/;
+    double Benergy = 0/*FIXME UNINIT AND UNUSED*/;
 
     void SetComEnergy(double);
     void SetInitialPartonMomenta(const double, const double) const;
@@ -327,7 +327,7 @@ class MEPhaseSpace
     double ComputePDF(double, double, double) const;
     double ConvolvePdfCrossSection(double, double, double) const;
 
-    TransferFunctions* transferFunctions;
+    TransferFunctions* transferFunctions = nullptr;
 
     void UpdateKinVar() const;
     double KinComputeWmass(double* , double* ) const;
@@ -352,10 +352,10 @@ class MEPhaseSpace
     struct MEMFix_TopHad {
       double Bjet_Theta;
       double Bjet_Phi;
-      double Jet1_Theta;
-      double Jet1_Phi;
-      double Jet2_Theta;
-      double Jet2_Phi;
+      double Jet1_Theta = 0;
+      double Jet1_Phi = 0;
+      double Jet2_Theta = 0;
+      double Jet2_Phi = 0;
       int TopSign;
       int isBmissing;
       int isJmissing;
@@ -470,7 +470,7 @@ class MEPhaseSpace
 };
 
 MEPhaseSpace::MEPhaseSpace(){
-
+  verbosity = 0; 
   if (verbosity>=1) cout << "MEPhaseSpace constructor" << endl;
 
   //Initialise all the partons
@@ -521,7 +521,9 @@ MEPhaseSpace::MEPhaseSpace(){
   GeV2barn = 0.38937966 * pow (10, 9.);
 
   y = new double[15];
+  std::fill(y, y+15, -999.);
   xMEM = new double[28];
+  std::fill(xMEM, xMEM+28, -999.);
 
 }
 
@@ -855,9 +857,9 @@ void MEPhaseSpace::AddIntegVar_TopLep(int posOutput, const double *xInput, int *
         xMEM[posOutput+2] = xInput[*posInput+index+1];
         index += 2;
       }
-      xMEM[posOutput+3] = (numTop==1)*MEMFix_TopLep.Lep_E + (numTop==2)*MEMFix_TopLep2.Lep_E;
-      xMEM[posOutput+4] = (numTop==1)*MEMFix_TopLep.Lep_Theta + (numTop==2)*MEMFix_TopLep2.Lep_Theta;
-      xMEM[posOutput+5] = (numTop==1)*MEMFix_TopLep.Lep_Phi + (numTop==2)*MEMFix_TopLep2.Lep_Phi;
+      xMEM[posOutput+3] = (numTop==1 ? MEMFix_TopLep.Lep_E : MEMFix_TopLep2.Lep_E);
+      xMEM[posOutput+4] = (numTop==1 ? MEMFix_TopLep.Lep_Theta : MEMFix_TopLep2.Lep_Theta);
+      xMEM[posOutput+5] = (numTop==1 ? MEMFix_TopLep.Lep_Phi : MEMFix_TopLep2.Lep_Phi);
       xMEM[posOutput+6] = xInput[*posInput+index+0]; //TopLep, Neut_Theta
       xMEM[posOutput+7] = xInput[*posInput+index+1]; //TopLep, Neut_Phi
       index += 2;
@@ -866,17 +868,17 @@ void MEPhaseSpace::AddIntegVar_TopLep(int posOutput, const double *xInput, int *
       xMEM[posOutput+0] = xInput[*posInput+0]; //TopLep, Bjet_E
       index++;
       if ((numTop==1 && MEMFix_TopLep.isBmissing==0) || (numTop==2 && MEMFix_TopLep2.isBmissing==0)) {
-        xMEM[posOutput+1] = (numTop==1)*MEMFix_TopLep.Bjet_Theta + (numTop==2)*MEMFix_TopLep2.Bjet_Theta;
-        xMEM[posOutput+2] = (numTop==1)*MEMFix_TopLep.Bjet_Phi + (numTop==2)*MEMFix_TopLep2.Bjet_Phi;
+        xMEM[posOutput+1] = (numTop==1 ? MEMFix_TopLep.Bjet_Theta  : MEMFix_TopLep2.Bjet_Theta);
+        xMEM[posOutput+2] = (numTop==1 ? MEMFix_TopLep.Bjet_Phi    : MEMFix_TopLep2.Bjet_Phi);
       }
       else if ((numTop==1 && MEMFix_TopLep.isBmissing==1) || (numTop==2 && MEMFix_TopLep2.isBmissing==1)) {
         xMEM[posOutput+1] = xInput[*posInput+index+0];
         xMEM[posOutput+2] = xInput[*posInput+index+1];
         index += 2;
       }
-      xMEM[posOutput+3] = (numTop==1)*MEMFix_TopLep.Lep_E + (numTop==2)*MEMFix_TopLep2.Lep_E;
-      xMEM[posOutput+4] = (numTop==1)*MEMFix_TopLep.Lep_Theta + (numTop==2)*MEMFix_TopLep2.Lep_Theta;
-      xMEM[posOutput+5] = (numTop==1)*MEMFix_TopLep.Lep_Phi + (numTop==2)*MEMFix_TopLep2.Lep_Phi;
+      xMEM[posOutput+3] = (numTop==1 ? MEMFix_TopLep.Lep_E  : MEMFix_TopLep2.Lep_E);
+      xMEM[posOutput+4] = (numTop==1 ? MEMFix_TopLep.Lep_Theta  : MEMFix_TopLep2.Lep_Theta);
+      xMEM[posOutput+5] = (numTop==1 ? MEMFix_TopLep.Lep_Phi  : MEMFix_TopLep2.Lep_Phi);
       xMEM[posOutput+6] = xInput[*posInput+index+0]; //TopLep, Neut_Phi
       xMEM[posOutput+7] = xInput[*posInput+index+1]; //TopLep, tW
       index += 2;
