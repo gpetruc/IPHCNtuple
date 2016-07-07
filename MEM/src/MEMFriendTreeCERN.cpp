@@ -151,6 +151,11 @@ std::map<std::string,float> MEMFriendTreeCERN::compute() {
         if (initresult==1) {
             MEMpermutations[ih]->LoopPermutations(hypIntegrator);
             ret[shyp[ih]] = MEMpermutations[ih]->resMEM_avgExl0.weight;
+            ret[shyp[ih]+"_err"] = MEMpermutations[ih]->resMEM_avgExl0.err;
+            ret[shyp[ih]+"_time"] = MEMpermutations[ih]->resMEM_avgExl0.time;
+            ret[shyp[ih]+"_chi2"] = MEMpermutations[ih]->resMEM_avgExl0.chi2;
+            ret[shyp[ih]+"_nHypAll"] = MEMpermutations[ih]->nHypAllowed;
+            ret[shyp[ih]+"_nNull"] = MEMpermutations[ih]->nNullResult;
         }
     }
     if (index[1]!=-1 && index[2]!=-1) {
@@ -159,6 +164,9 @@ std::map<std::string,float> MEMFriendTreeCERN::compute() {
             float mem_tth_weight_chi2, mem_tth_weight_time;
             CombineHypotheses(*MEMpermutations[index[1]], *MEMpermutations[index[2]], &mem_tth_weight, &mem_tth_weight_log, &mem_tth_weight_err, &mem_tth_weight_chi2, &mem_tth_weight_time, &mem_tth_weight_avg, &mem_tth_weight_max, &mem_tth_weight_logmean, &kin_tth_weight_logmax, &kin_tth_weight_logmaxint, &mem_tth_weight_kinmax, &mem_tth_weight_kinmaxint, &mem_tth_weight_JEC_up, &mem_tth_weight_JEC_down, &mem_tth_weight_JER_up, &mem_tth_weight_JER_down);
             ret["TTH"] = mem_tth_weight;
+            ret["TTH_err"] = mem_tth_weight_err;
+            ret["TTH_chi2"] = mem_tth_weight_chi2;
+            ret["TTH_time"] = mem_tth_weight_time;
         }
     }
     return ret;
