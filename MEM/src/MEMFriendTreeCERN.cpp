@@ -108,19 +108,19 @@ void MEMFriendTreeCERN::clear() {
   multiLepton->JetsLowestMjj.clear();
 }
 
-void MEMFriendTreeCERN::addLepton(const TLorentzVector &p4, int pdgId) {
+void MEMFriendTreeCERN::addLepton(TLorentzVector p4, int pdgId) {
   multiLepton->FillParticle("lepton", pdgId, p4);
 }
 
-void MEMFriendTreeCERN::addJet(const std::string &what,  const TLorentzVector &p4, float CSV) {
+void MEMFriendTreeCERN::addJet(const std::string &what,  TLorentzVector p4, float CSV) {
     multiLepton->FillParticle(what, 0, CSV, 0,0,0,0, p4);
 }
 
-void MEMFriendTreeCERN::addBJet(const TLorentzVector &p4, float CSV) {
-    multiLepton->FillParticle("bjet", 0, CSV, 0,0,0,0, p4);
+void MEMFriendTreeCERN::addBJet(TLorentzVector p4, float CSV) {
+    multiLepton->FillParticle("bjet", 5, CSV, 0,0,0,0, p4);
 }
 
-void MEMFriendTreeCERN::setMET(const TLorentzVector &p4, double cov00, double cov01, double cov10, double cov11, double mHT) {
+void MEMFriendTreeCERN::setMET(TLorentzVector p4, double cov00, double cov01, double cov10, double cov11, double mHT) {
   multiLepton->mET = p4;
   multiLepton->mET_cov00 = cov00;
   multiLepton->mET_cov01 = cov01;

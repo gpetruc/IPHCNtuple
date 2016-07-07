@@ -25,10 +25,10 @@ class  MEMFriendTreeCERN {
         void init(const std::string &config);
 
         void clear();
-        void addLepton(const TLorentzVector &p4, int pdgId);
-        void addJet(const std::string &what,  const TLorentzVector &p4, float CSV);
-        void addBJet(const TLorentzVector &p4, float CSV);
-        void setMET(const TLorentzVector &p4, double cov00, double cov01, double cov10, double cov11, double mHT) ;
+        void addLepton(TLorentzVector p4, int pdgId);
+        void addJet(const std::string &what,  TLorentzVector p4, float CSV);
+        void addBJet(TLorentzVector p4, float CSV);
+        void setMET(TLorentzVector p4, double cov00, double cov01, double cov10, double cov11, double mHT) ;
         bool setCategory(const std::string &cat);
         std::map<std::string,float> compute() ;
     protected:
