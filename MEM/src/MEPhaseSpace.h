@@ -855,9 +855,9 @@ void MEPhaseSpace::AddIntegVar_TopLep(int posOutput, const double *xInput, int *
         xMEM[posOutput+2] = xInput[*posInput+index+1];
         index += 2;
       }
-      xMEM[posOutput+3] = (numTop==1)*MEMFix_TopLep.Lep_E + (numTop==2)*MEMFix_TopLep2.Lep_E;
-      xMEM[posOutput+4] = (numTop==1)*MEMFix_TopLep.Lep_Theta + (numTop==2)*MEMFix_TopLep2.Lep_Theta;
-      xMEM[posOutput+5] = (numTop==1)*MEMFix_TopLep.Lep_Phi + (numTop==2)*MEMFix_TopLep2.Lep_Phi;
+      xMEM[posOutput+3] = (numTop==1 ? MEMFix_TopLep.Lep_E : MEMFix_TopLep2.Lep_E);
+      xMEM[posOutput+4] = (numTop==1 ? MEMFix_TopLep.Lep_Theta : MEMFix_TopLep2.Lep_Theta);
+      xMEM[posOutput+5] = (numTop==1 ? MEMFix_TopLep.Lep_Phi : MEMFix_TopLep2.Lep_Phi);
       xMEM[posOutput+6] = xInput[*posInput+index+0]; //TopLep, Neut_Theta
       xMEM[posOutput+7] = xInput[*posInput+index+1]; //TopLep, Neut_Phi
       index += 2;
@@ -866,17 +866,17 @@ void MEPhaseSpace::AddIntegVar_TopLep(int posOutput, const double *xInput, int *
       xMEM[posOutput+0] = xInput[*posInput+0]; //TopLep, Bjet_E
       index++;
       if ((numTop==1 && MEMFix_TopLep.isBmissing==0) || (numTop==2 && MEMFix_TopLep2.isBmissing==0)) {
-        xMEM[posOutput+1] = (numTop==1)*MEMFix_TopLep.Bjet_Theta + (numTop==2)*MEMFix_TopLep2.Bjet_Theta;
-        xMEM[posOutput+2] = (numTop==1)*MEMFix_TopLep.Bjet_Phi + (numTop==2)*MEMFix_TopLep2.Bjet_Phi;
+        xMEM[posOutput+1] = (numTop==1 ? MEMFix_TopLep.Bjet_Theta  : MEMFix_TopLep2.Bjet_Theta);
+        xMEM[posOutput+2] = (numTop==1 ? MEMFix_TopLep.Bjet_Phi    : MEMFix_TopLep2.Bjet_Phi);
       }
       else if ((numTop==1 && MEMFix_TopLep.isBmissing==1) || (numTop==2 && MEMFix_TopLep2.isBmissing==1)) {
         xMEM[posOutput+1] = xInput[*posInput+index+0];
         xMEM[posOutput+2] = xInput[*posInput+index+1];
         index += 2;
       }
-      xMEM[posOutput+3] = (numTop==1)*MEMFix_TopLep.Lep_E + (numTop==2)*MEMFix_TopLep2.Lep_E;
-      xMEM[posOutput+4] = (numTop==1)*MEMFix_TopLep.Lep_Theta + (numTop==2)*MEMFix_TopLep2.Lep_Theta;
-      xMEM[posOutput+5] = (numTop==1)*MEMFix_TopLep.Lep_Phi + (numTop==2)*MEMFix_TopLep2.Lep_Phi;
+      xMEM[posOutput+3] = (numTop==1 ? MEMFix_TopLep.Lep_E  : MEMFix_TopLep2.Lep_E);
+      xMEM[posOutput+4] = (numTop==1 ? MEMFix_TopLep.Lep_Theta  : MEMFix_TopLep2.Lep_Theta);
+      xMEM[posOutput+5] = (numTop==1 ? MEMFix_TopLep.Lep_Phi  : MEMFix_TopLep2.Lep_Phi);
       xMEM[posOutput+6] = xInput[*posInput+index+0]; //TopLep, Neut_Phi
       xMEM[posOutput+7] = xInput[*posInput+index+1]; //TopLep, tW
       index += 2;
