@@ -56,8 +56,8 @@ class MultiLepton
   float mHT;
   double mET_cov00, mET_cov01, mET_cov10, mET_cov11;
 
-  double *xL;
-  double *xU;
+  std::vector<double> xL;
+  std::vector<double> xU;
   int nParam;
 
   double mB;
@@ -124,8 +124,8 @@ class MultiLepton
 MultiLepton::MultiLepton(){
 
   nParam = 15;
-  xL = new double[nParam];
-  xU = new double[nParam];
+  xL.resize(nParam);
+  xU.resize(nParam);
 
   mB = 4.7;
   JetTFfracmin = 0.65;//0.65; //next try 0.5 (5 sigma at 100 GeV for a 0.2*Egen gaussian width)
