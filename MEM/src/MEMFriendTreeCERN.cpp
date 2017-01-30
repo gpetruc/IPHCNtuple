@@ -149,6 +149,7 @@ std::map<std::string,float> MEMFriendTreeCERN::compute() {
         if (initresult==1) {
             MEMpermutations[ih]->LoopPermutations(hypIntegrator);
             ret[shyp[ih]] = MEMpermutations[ih]->resMEM_avgExl0.weight;
+            ret[shyp[ih]+"_kinmaxint"] =  MEMpermutations[ih]->resMEM_maxKinFit_Int.weight;
         }
     }
     //if (index_hyp[1]!=-1 && index_hyp[2]!=-1) {
