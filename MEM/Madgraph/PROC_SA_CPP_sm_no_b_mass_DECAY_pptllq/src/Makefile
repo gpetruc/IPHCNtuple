@@ -1,5 +1,5 @@
 LIBDIR=../lib
-CXXFLAGS= -O -I.
+CXXFLAGS= -O -I. -fPIC
 
 target=$(LIBDIR)/libmodel_sm_no_b_mass_pptllq.a
 

@@ -1,7 +1,7 @@
 LIBDIR=../../lib
 INCDIR=../../src
 MODELLIB=model_sm_ckm_ppttlmvljj
-CXXFLAGS= -O -I$(INCDIR) -I.
+CXXFLAGS= -O -I$(INCDIR) -I. -fPIC
 LIBFLAGS= -L$(LIBDIR) -l$(MODELLIB)
 
 main=check
