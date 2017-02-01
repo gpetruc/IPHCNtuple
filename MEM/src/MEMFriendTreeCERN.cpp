@@ -59,6 +59,7 @@ void MEMFriendTreeCERN::init(const std::string &config) {
         if (shyp[ih]=="TTWJJ") index[ih] = 4;
         if (shyp[ih]=="TTbarfl") index[ih] = 5;
         if (shyp[ih]=="TTbarsl") index[ih] = 6;
+        if (shyp[ih]=="TLLJ") index[ih] = 7;
     }
 
     cfgParser->LoadOptim(&doOptim);
@@ -75,6 +76,7 @@ void MEMFriendTreeCERN::init(const std::string &config) {
     xsTTLL = hypIntegrator->meIntegrator->xsTTLL * hypIntegrator->meIntegrator->brTopHad * hypIntegrator->meIntegrator->brTopLep;
     xsTTW = hypIntegrator->meIntegrator->xsTTW * hypIntegrator->meIntegrator->brTopLep * hypIntegrator->meIntegrator->brTopLep;
     xsTTbar = hypIntegrator->meIntegrator->xsTTbar * hypIntegrator->meIntegrator->brTopHad * hypIntegrator->meIntegrator->brTopLep;
+    xsTLLJ = hypIntegrator->meIntegrator->xsTLLJ * hypIntegrator->meIntegrator->brTopLep;
 
     index_CatJets[0] = "3l_2b_2j";
     index_CatJets[1] = "3l_1b_2j";
@@ -94,6 +96,7 @@ void MEMFriendTreeCERN::init(const std::string &config) {
         if(shyp[ih]=="TTW" || shyp[ih]=="TTWJJ") index_XS[ih]=xsTTW;
         if(shyp[ih]=="TTH" || shyp[ih]=="TTHsl" || shyp[ih]=="TTHfl") index_XS[ih]=xsTTH;
         if(shyp[ih]=="TTbar" || shyp[ih]=="TTbarsl" || shyp[ih]=="TTbarfl") index_XS[ih]=xsTTbar;
+        if(shyp[ih]=="TLLJ") index_XS[ih]=xsTLLJ;
     }
 
     MEMpermutations.reserve(nhyp);

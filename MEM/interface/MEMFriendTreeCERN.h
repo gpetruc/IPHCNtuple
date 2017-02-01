@@ -40,7 +40,7 @@ class  MEMFriendTreeCERN {
         int* nPointsHyp;
         int* index_hyp;
 
-        int index[7];
+        int index[8];
 
         int doOptim;
         int doOptimTopHad, doOptimTopLep, doOptimHiggs, doOptimW;
@@ -51,9 +51,10 @@ class  MEMFriendTreeCERN {
         double xsTTLL;
         double xsTTW;
         double xsTTbar;
+        double xsTLLJ;
 
         std::string index_CatJets[12];
-        Double_t index_XS[7];
+        Double_t index_XS[8];
 };
 
 
