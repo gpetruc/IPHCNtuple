@@ -19,6 +19,7 @@
 #include "MultiLepton.h"
 
 #include <ctime>
+#include <cassert>
 
 
 struct IntegrationResult {
@@ -67,8 +68,8 @@ HypIntegrator::HypIntegrator(){
 
   meIntegrator = new MEPhaseSpace();
 
-  toIntegrate = new ROOT::Math::Functor*[15];
-  for (int i=0; i<15; i++){
+  toIntegrate = new ROOT::Math::Functor*[16];
+  for (int i=0; i<16; i++){
     toIntegrate[i] = new ROOT::Math::Functor(meIntegrator, &MEPhaseSpace::Eval, i);
   }
 
@@ -118,9 +119,12 @@ void HypIntegrator::SetupIntegrationHypothesis(int kMode, int kCat, int nPoints)
   meIntegrator->SetIntegrationMode(kMode);
 
   int nparam = meIntegrator->GetNumberIntegrationVar(kMode, kCat);
+  if (nparam >= 16) std::cout << "Too many integration vars? nparam = " << nparam << std::endl;
+  assert(nparam < 16);
 
   ROOT::Math::Functor* FunctorHyp = NULL;
   FunctorHyp = toIntegrate[nparam];
+  assert(FunctorHyp != NULL);
 
   //ig2 = new ROOT::Math::GSLMCIntegrator( ROOT::Math::IntegrationMultiDim::kVEGAS, 1.e-12, 1.e-5, intPoints);
   //param = new ROOT::Math::VegasParameters( *(ig2->ExtraOptions()) );
