@@ -319,7 +319,7 @@ void MultiLepton::ReadIntegrationBoundaries(int kMode, MEPhaseSpace** meIntegrat
 
   for (int i=0; i<nparam; i++) {
      if ((*meIntegrator)->verbosity>=1) cout << "Var "<<i<<" xL="<<xL[i]<<" xU="<<xU[i]<<endl;
-     if (xU[i] < xL[i]) cout << "Error: xU < xL" << endl;
+     if (xU[i] < xL[i]) cout << "Error: xU < xL for variable " << i << endl;
   }
   return;
 }
