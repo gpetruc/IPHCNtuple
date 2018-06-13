@@ -239,9 +239,12 @@ void Permutations::LoopPermutations(HypIntegrator* hypIntegrator){
              combcheck = multiLepton.CheckPermutationHyp(Hypothesis);
 
              if (combcheck) {
-               for (unsigned int il=0; il<multiLepton.Leptons.size(); il++) cout << " Lepton"<< il<<"Id="<<multiLepton.Leptons.at(il).Id; cout<<endl;
-               for (unsigned int ib=0; ib<multiLepton.Bjets.size(); ib++) cout << " Bjet"<< ib<<"Pt="<<multiLepton.Bjets.at(ib).P4.Pt(); cout<<endl;
-               for (unsigned int ij=0; ij<multiLepton.Jets.size(); ij++) cout << " Jet"<< ij<<"Pt="<<multiLepton.Jets.at(ij).P4.Pt(); cout<<endl;
+               for (unsigned int il=0; il<multiLepton.Leptons.size(); il++) cout << " Lepton"<< il<<"Id="<<multiLepton.Leptons.at(il).Id; 
+               cout<<endl;
+               for (unsigned int ib=0; ib<multiLepton.Bjets.size(); ib++) cout << " Bjet"<< ib<<"Pt="<<multiLepton.Bjets.at(ib).P4.Pt(); 
+               cout<<endl;
+               for (unsigned int ij=0; ij<multiLepton.Jets.size(); ij++) cout << " Jet"<< ij<<"Pt="<<multiLepton.Jets.at(ij).P4.Pt();
+               cout<<endl;
 
                multiLepton.FillParticlesHypothesis(Hypothesis, &((*hypIntegrator).meIntegrator));
                multiLepton.SwitchJetSyst(0);
