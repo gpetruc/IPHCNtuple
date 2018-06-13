@@ -157,9 +157,15 @@ std::map<std::string,float> MEMFriendTreeCERN::compute() {
             ret[shyp[ih]+"_kinmaxint"] =  MEMpermutations[ih]->resMEM_maxKinFit_Int.weight;
         }
     }
-    //if (index_hyp[1]!=-1 && index_hyp[2]!=-1) {
-    //    if (MEMpermutations[index_hyp[1]].computeHyp || MEMpermutations[index_hyp[2]].computeHyp)
-    //        CombineHypotheses(MEMpermutations[index_hyp[1]], MEMpermutations[index_hyp[2]], &tree.mc_mem_tth_weight, &tree.mc_mem_tth_weight_log, &tree.mc_mem_tth_weight_err, &tree.mc_mem_tth_weight_chi2, &tree.mc_mem_tth_weight_time, &tree.mc_mem_tth_weight_avg, &tree.mc_mem_tth_weight_max, &tree.mc_mem_tth_weight_logmean, &tree.mc_kin_tth_weight_logmax, &tree.mc_kin_tth_weight_logmaxint, &tree.mc_mem_tth_weight_kinmax, &tree.mc_mem_tth_weight_kinmaxint, &tree.mc_mem_tth_weight_JEC_up, &tree.mc_mem_tth_weight_JEC_down, &tree.mc_mem_tth_weight_JER_up, &tree.mc_mem_tth_weight_JER_down);
-    //}
+    if (index_hyp[1]!=-1 && index_hyp[2]!=-1) {
+        if (MEMpermutations[index_hyp[1]]->computeHyp || MEMpermutations[index_hyp[2]]->computeHyp) {
+            double weight_avg, weight_err, weight_mean, weight_JEC_down, weight_JEC_up, weight_JER_down, weight_JER_up, weight_kin_log, weight_kin_logint, weight_kinmax, weight_kinmaxint, weight_log, weight_logmean, weight_max;
+            float weight_chi2, weight_time;
+            CombineHypotheses(*MEMpermutations[index_hyp[1]], *MEMpermutations[index_hyp[2]], &weight_mean, &weight_log, &weight_err, &weight_chi2, &weight_time, &weight_avg, &weight_max, &weight_logmean, &weight_kin_log, &weight_kin_logint, &weight_kinmax, &weight_kinmaxint, &weight_JEC_up, &weight_JEC_down, &weight_JER_up, &weight_JER_down);
+            ret["TTH_mean"] = weight_mean;
+            ret["TTH_avg"] = weight_avg;
+            ret["TTH_kinmaxint"] = weight_kinmaxint;
+        }
+    }
     return ret;
 }
